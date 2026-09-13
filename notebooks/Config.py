@@ -4,7 +4,7 @@ from pyspark.sql.window import Window
 from delta.tables import DeltaTable
 from pyspark.sql.types import DecimalType
 
-CATALOG_NAME = "jpmc_assessment"
+CATALOG_NAME = "dm-ep"
 
 BRONZE_SCHEMA = f"{CATALOG_NAME}.bronze"
 SILVER_SCHEMA = f"{CATALOG_NAME}.silver"
