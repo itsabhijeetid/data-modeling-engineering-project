@@ -19,7 +19,7 @@ The pipeline follows a **Bronze → Silver → Gold** architecture and covers:
 
 The project uses the catalog:
 
-`jpmc_assessment`
+`dm-ep`
 
 ## Architecture
 
@@ -104,27 +104,27 @@ Contains the common catalog, schema, and table names used throughout the pipelin
 ### Catalog
 
 ```text
-jpmc_assessment
+dm-ep
 ```
 
 ### Schemas
 
 ```text
-jpmc_assessment.bronze
-jpmc_assessment.silver
-jpmc_assessment.gold
+dm-ep.bronze
+dm-ep.silver
+dm-ep.gold
 ```
 
 ### Tables
 
 ```text
-jpmc_assessment.bronze.raw_sales
-jpmc_assessment.silver.sales_clean
-jpmc_assessment.gold.dq_quarantine
-jpmc_assessment.gold.dim_customer
-jpmc_assessment.gold.dim_product
-jpmc_assessment.gold.dim_date
-jpmc_assessment.gold.fact_sales
+dm-ep.bronze.raw_sales
+dm-ep.silver.sales_clean
+dm-ep.gold.dq_quarantine
+dm-ep.gold.dim_customer
+dm-ep.gold.dim_product
+dm-ep.gold.dim_date
+dm-ep.gold.fact_sales
 ```
 
 ## 2. Bronze Layer – Raw Ingestion
@@ -153,7 +153,7 @@ The Bronze layer preserves source values so invalid values can be handled during
 ### Output
 
 ```text
-jpmc_assessment.bronze.raw_sales
+dm-ep.bronze.raw_sales
 ```
 
 ## 3. Silver Layer – Data Quality & Transformation
@@ -202,13 +202,13 @@ Silver table         Quarantine table
 Valid records:
 
 ```text
-jpmc_assessment.silver.sales_clean
+dm-ep.silver.sales_clean
 ```
 
 Invalid records:
 
 ```text
-jpmc_assessment.gold.dq_quarantine
+dm-ep.gold.dq_quarantine
 ```
 
 Invalid records are retained with the reason for rejection.
@@ -226,7 +226,7 @@ Creates the dimensions required by the sales fact table.
 Table:
 
 ```text
-jpmc_assessment.gold.dim_date
+dm-ep.gold.dim_date
 ```
 
 Generated from the minimum and maximum valid sale dates.
@@ -250,7 +250,7 @@ The `date_key` uses the `YYYYMMDD` format.
 Table:
 
 ```text
-jpmc_assessment.gold.dim_product
+dm-ep.gold.dim_product
 ```
 
 Unique products are extracted from Silver data and assigned surrogate keys.
@@ -267,7 +267,7 @@ Columns:
 Table:
 
 ```text
-jpmc_assessment.gold.dim_customer
+dm-ep.gold.dim_customer
 ```
 
 The customer dimension uses **Slowly Changing Dimension Type 2**.
@@ -319,7 +319,7 @@ Creates the transaction-level sales fact table.
 Table:
 
 ```text
-jpmc_assessment.gold.fact_sales
+dm-ep.gold.fact_sales
 ```
 
 Columns:
