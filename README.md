@@ -61,7 +61,7 @@ The project uses the catalog:
 ## Project Structure
 
 ```text
-JPMorganChase_Data_Modeling_Assessment/
+Data_Modeling_Assessment/
 │
 ├── README.md
 │
